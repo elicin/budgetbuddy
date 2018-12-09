@@ -1,3 +1,4 @@
+/*POPUP CONTAINER ON SIMULATIONEXPENSES.PHP*********/
 /* Popup container */
 .popup {
     position: relative;
@@ -49,4 +50,37 @@
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+/*POPUP CONTAINER ON SIMULATIONSEXPENSES.PHP ENDS*******/
+
+
+/*SIDE NAV*******/
+.sidenav {
+    width: 100px;
+    /*position: fixed;*/
+    z-index: 1;
+    top: 20px;
+    left: 10px;
+    background: #eee;
+    overflow-x: hidden;
+    padding: 8px 0;
+    float: left;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #2196F3;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #064579;
+}
+
+.main {
+    margin-left: 140px; /* Same width as the sidebar + left position in px */
+    /*font-size: 28px;  Increased text to enable scrolling */
+    padding: 0px 10px;
 }

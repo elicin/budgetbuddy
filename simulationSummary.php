@@ -95,29 +95,36 @@ negative amount: uh oh, you don't have enough income for all your expenditures a
 <?php while($row3 = $leftover->fetch()){ ?>
 <p>Your Leftover</p>
     <p>$<?php echo($row3['leftover']); ?></p>
-<?php } ?>
-
-
 
 <?php
-if((int) $row3['leftover'] > 1){
+// echo($row3['leftover']);
+$test = (int)$row3['leftover'];
 
-    echo("extra moneyz");
-     }
+if($test > 0){
+
+    echo("Looks like you have some extra cash you haven't put into consideration yet. You can either treat yourself and spend more, or save that money for the future!");
     
+}else if($test == 0){
 
-else if(($row3['leftover']) == 0){
-?>
-    <!-- <p>good job</p> -->
-    <?php echo("0 moneyz")?>
-<?php
-}else if($row3['leftover'] < -1){
-?>
-    <!-- <p>you have no money!</p> -->
-    <?php echo("no moneyz")?>
-<?php
+    //<!-- <p>good job</p> -->
+    echo("Good job, you've budgeted every cent you have for the month! You know what you're doing.");
+
+}else if($test < 0){
+
+    //<!-- <p>you have no money!</p> -->
+    echo("Uh oh, you don't have enough income to save and use that much money. Try adjusting your budget by checking where you think you may be spending too much money.");
 }
+
+} ?>
+
+
+
+<?php
+echo("hi eileen");
 ?>
+  
+
+
     <!-- <p>you have extra money</p>     -->
 
 

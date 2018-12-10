@@ -11,7 +11,6 @@ $pdo = new PDO($dsn, $dbusername, $dbpassword);
 $stmt = $pdo->prepare("
 		SELECT `title`, `explanation`, `examples`
 		FROM `ExpenseTypes` 
-		WHERE `title` = '".$q."'
 		");
 $stmt->execute();
 // $stmt->fetch();
@@ -65,17 +64,17 @@ $images->execute();
 
 <!-- <p>Categories of Expenditures</p> -->
 <!-- make it vertical -->
-<div class="sidenav" onclick="showExpense(this.value)">
-	<a value="food">Food</a>
-	<a>Drinks</a>
-	<a>Groceries</a>
-	<a>Transportation</a>
-	<a>Shopping</a>
-	<a>Entertainment</a>
-	<a>Housing</a>
-	<a>Digital</a>
-	<a>Health</a>
-	<a>Miscellaneous</a>
+<div class="sidenav">
+	<a onclick="showExpense('food')">Food</a>
+	<a onclick="showExpense('drinks')">Drinks</a>
+	<a onclick="showExpense('groceries')">Groceries</a>
+	<a onclick="showExpense('transportation')">Transportation</a>
+	<a onclick="showExpense('shopping')">Shopping</a>
+	<a onclick="showExpense('entertainment')">Entertainment</a>
+	<a onclick="showExpense('housing')">Housing</a>
+	<a onclick="showExpense('digital')">Digital</a>
+	<a onclick="showExpense('health')">Health</a>
+	<a onclick="showExpense('miscellaneous')">Miscellaneous</a>
 
 </div>
 
@@ -85,47 +84,142 @@ $images->execute();
 	<p>Whether it's going out with friends, a pick-me-up coffee in the morning, or seeing something in a store that's a must buy, it's easy to spend money without realizing how much you've actually spent. While your morning coffee may only be $2, that can accumulate to $60 a month, and approximately $720 a year! Budgeting will help you take note on how much you're really spending so you can start figuring out how to start saving.</p>
 </div>
 
-<p id="demo">
-	<?php
-// <?php while($row3 = $leftover->fetch()){ 
-while($row = $stmt->fetch()){
-	echo($row['title']);
-}
+<div id="demo">
+	<div id="food">
+		<p>What is Food?</p>
+		<p class="">Food is food. It’s what you eat to provide nutritions for your body to continue functioning.</p>
+		<p class="">Examples</p>
+		<ul>
+			<li>Fast food</li>
+			<li>Snacks</li>
+			<li>Eating out</li>
+		</ul>
+		<img src="images/food-big.png">
 
-?>
-</p>
+	</div>
+	<div id="drinks">
+		<p class="">What are Drinks?</p>
+		<p class="">Drinks would include any beverage that you consume outside of groceries.</p>
+		<p class="">Examples</p>
+		<ul>
+			<li>Morning coffee</li>
+			<li>Afternoon tea</li>
+			<li>Cafes</li>
+			<li>Fast food beverages</li>
+		</ul>
+		<img src="images/drinks-big.png">
 
+	</div>
+	<div id="groceries">
+		<p class="">What are Groceries?</p>
+		<p class="">Groceries are items purchased as a grocery store to create meals to be consumed. By buying groceries, you have full control on what you consume and will have a better idea of how much money you've used.</p>
+		<p class="">Examples</p>
+		<ul>
+			<li>Dairy</li>
+			<li>Vegetables</li>
+			<li>Produce</li>
+			<li>Seasonings</li>
+			<li>Cans of soup</li>
+			<li>Any products purchased for future use</li>
+		</ul>
+		<img src="images/groceries-big.png">
 
-<!-- <ul>
-	<li>
-		<a href="food.html">Food</a></li>
-	<li>
-		<a href="drinks.html">Drinks</a></li>
-	<li>	
-		<a href="groceries.html">Groceries</a></li>
-	<li>
-		<a href="transportation.html">Transportation</a></li>
-	<li>
-		<a href="shopping.html">Shopping</a></li>
-	<li>
-		<a href="entertainment.html">Entertainment</a></li>
-	<li>
-		<a href="housing.html">Housing</a></li>
-	<li>
-		<a href="digital.html">Digital</a></li>
-	<li>
-		<a href="medical.html">Health</a></li>
-	<li>
-		<a href="misc.html">Miscellaneous</a></li>
-</ul> -->
-<!-- depending on what you click, ajax auto changes the page to its information
-guess i'll need to make another database with all the information in the page -->
+	</div>
+	<div id="transportation">
+		<p>What is Transportation?</p>
+		<p>Transportation is any expense incurred to go from one location to another. Depending on your resources, this could be your car, or taking public transportation.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Bus fee</li>
+			<li>Gas and fuel</li>
+			<li>Car insurance</li>
+			<li>Parking</li>
+		</ul>
+		<img src="images/transportation-big.png">
 
+	</div>
+	<div id="shopping">
+		<p>What is Shopping?</p>
+		<p>Shopping is things you purchase that don't go into the other categories.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Clothing</li>
+			<li>Books</li>
+			<li>Hobby-oriented items</li>
+			<li>Accessories</li>
+			<li>Personal care</li>
+		</ul>
+		<img src="images/shopping-big.png">
 
+	</div>
+	<div id="entertainment">
+		<p>What is Entertainment?</p>
+		<p>Entertainment are things that are for your own fun.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Electronics</li>
+			<li>Game consoles</li>
+			<li>Movies</li>
+			<li>Music</li>
+			<li>Arts</li>
+			<li>Magazines</li>
+		</ul>
+		<img src="images/entertainment-big.png">
 
-<!-- put a side bar that pulls different information from the database based on what button is clicked, or is it better to just html it?-->
+	</div>
+	<div id="housing">
+		<p>What is Housing?</p>
+		<p>If you're still living at home, you likely won't have this expenditure, but once you start living by yourself, you'll start incurring things such as rent.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Rent</li>
+			<li>Mortgage</li>
+			<li></li>
+		</ul>
+		<img src="images/housing-big.png">
 
+	</div>
+	<div id="digital">
+		<p>What is Digital?</p>
+		<p>Digital will include everything related to your digital products, like your phone and tv.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Phone plans</li>
+			<li>TV plans</li>
+			<li>Cellular data</li>
+		</ul>
+		<img src="images/digital-big.png">
 
+	</div>
+	<div id="health">
+		<p>What is Health?</p>
+		<p>Health includes anything to take care of yourself. This includes going to yearly checkups and pharmaceutical drugs.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Dentist</li>
+			<li>Doctor</li>
+			<li>Eye care</li>
+			<li>Pharmacy</li>
+		</ul>
+		<img src="images/medical-big.png">
+
+	</div>
+	<div id="miscellaneous">
+		<p>What is Miscellaneous?</p>
+		<p>This will include everything else that weren't included in the other categories.</p>
+		<p>Examples</p>
+		<ul>
+			<li>Utilities</li>
+			<li>Hydro</li>
+			<li>Travelling</li>
+			<li>Business fees</li>
+		</ul>
+		<img src="images/miscellaneous-big.png">
+
+	</div>
+
+</div>
+	
 
 
 

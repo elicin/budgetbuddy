@@ -13,10 +13,15 @@ $dbpassword = "j*fWtHY&8q2";
 $pdo = new PDO($dsn, $dbusername, $dbpassword);
 
 //SELECT income from budget
-// $stmt = $pdo->prepare("
-// 						SELECT `food`, `drinks`, `groceries`, `transportation`, `housing`, `digital`, `medical`, `miscellaneous`
-// 						FROM `TheBudget`");
-// $stmt->execute();
+$stmt = $pdo->prepare("
+                            SELECT `income`, `wantToSave`, `food`, `drinks`, `groceries`, `transportation`, `shopping`, `entertainment`, `housing`, `digital`, `medical`, `miscellaneous`
+                            FROM `TheBudget` WHERE `budgetID` = '$number'
+                            ");
+$stmt->execute();
+
+// $imgs = $pdo->("
+// 							SELECT `
+// 							")
 
 
 // // SELECT all the dietary images
@@ -68,80 +73,77 @@ $pdo = new PDO($dsn, $dbusername, $dbpassword);
 	</ul>
 
 	<p>Insert your expenditures in the left per month</p> <!--this will disappear when clicked. -->
-	<form action="simulationExpenses-process.php" method="POST">
-		<!-- when you click the image, a popup pops out where you insertted the amount + a link to the article page -->
-		<div class="popup" onclick="myFunction()">Food $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-			<input type="number" name="food" />
-		<div class="popup" onclick="myFunction()">Drinks $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-			<input type="number" name="drinks" />
-
-		<div class="popup" onclick="myFunction()">Groceries $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="groceries" />
-
-		<div class="popup" onclick="myFunction()">Transportation $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="transportation" />
-
-		<div class="popup" onclick="myFunction()">Shopping $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="shopping" />
-
-		<div class="popup" onclick="myFunction()">Entertainment $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="entertainment" />
-
-		<div class="popup" onclick="myFunction()">Housing $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="housing" />
-
-		<div class="popup" onclick="myFunction()">Digital $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="digital" />
-
-		<div class="popup" onclick="myFunction()">Medical $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="medical" />
-
-		<div class="popup" onclick="myFunction()">Miscellaneous $
-		 <!-- instead of 'Food', it'll be a logo to click on -->
-			<span class="popuptext" id="myPopup"><a href="spendings.php" target="_blank">Click for an explanation</a>
-			</span>
-		</div>
-		<input type="number" name="miscellaneous" />
-		<br>
-			
-		<input type="submit" />
 	
+<?php while ($row = $stmt->fetch()) { ?>
+	<form action="simulationExpenses-process.php" method="POST">
+		
+		<p><img src="images/food.png">
+			Food $<input type="number" name="food" value="<?php echo($row['food']); ?>"/></p>
+		
+
+		<p><img src="images/drinks.png">
+			Drinks: $<input type='number' name='drinks' value="<?php echo($row['drinks']); ?>"/></p>
+		<?php
+			$drinks1 = (int)$row['drinks'];
+
+			if($drinks1 > 0 && $drinks1 <= 200){
+				?> 
+				<img class="drinks" src="images/drinks1.png" width='50'>
+				<?php
+			}
+			else if($drinks1 > 200){
+				?>
+				<img src="images/drinks2.png" width='50'>
+				<?php
+			}
+		?>
+
+		<p>Groceries: $<input type='number' name='groceries' value="<?php echo($row['groceries']); ?>"/></p>
+
+
+		<p>Transportation: $<input type='number' name='transportation' value="<?php echo($row['transportation']); ?>"/></p>
+		
+
+		<p>Shopping: $<input type='number' name='shopping' value="<?php echo($row['shopping']); ?>"/></p>
+		
+
+		<p>Entertainment: $<input type='number' name='entertainment' value="<?php echo($row['entertainment']); ?>"/></p>
+		
+
+		<p>Housing: $<input type='number' name='housing' value="<?php echo($row['housing']); ?>"/></p>
+		
+
+		<p>Digital: $<input type='number' name='digital' value="<?php echo($row['digital']); ?>"/></p>
+		
+
+		<p>Medical: $<input type='number' name='medical' value="<?php echo($row['medical']); ?>"/></p>
+		
+
+		<p>Miscellaneous: $<input type='number' name='miscellaneous' value="<?php echo($row['miscellaneous']); ?>"/></p>
+
+		<input type="submit" />
+
+		<input type="submit" value="See changes" formaction="simulationExpensesChange-process.php" />
+<?php 
+
+			$food1 = (int)$row['food'];
+
+			if($food1 > 0 && $food1 <= 200 ){
+				// echo("0 to 200");
+				?> 
+				<img src="images/food1.png" class="foodimg" width='100'>
+				<?php
+			}
+			else if($food1 > 200){
+				?>
+				<img src="images/food2.png" class="foodimg" width='100'>
+				<?php
+			}
+		?>
+<?php } ?>
+
+
+
 
 
 <footer>

@@ -2,6 +2,7 @@
 session_start();
 // $wantToSave = $_POST['wantToSave'];
 $number = $_SESSION['number'];
+$email = $_SESSION['email'];
 // echo($food);
 // echo($income);
 // echo($drinks);

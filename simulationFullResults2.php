@@ -1,8 +1,11 @@
 <?php
 session_start();
 // $wantToSave = $_POST['wantToSave'];
-$number = $_SESSION['number'];
-// $email = $_SESSION['email'];
+// $number = $_SESSION['number'];
+$email = $_SESSION['email'];
+
+// $_SESSION['email'] = $email;
+
 // echo($food);
 // echo($income);
 // echo($drinks);
@@ -13,30 +16,51 @@ $dbpassword = "j*fWtHY&8q2";
 
 $pdo = new PDO($dsn, $dbusername, $dbpassword); 
 
-// $st = $pdo->prepare("
-//                             SELECT 
-//                             ")
+
+// VIA EMAIL
+$stmt2 = $pdo->prepare("
+                        SELECT `User`.`budgetID`
+                        FROM `User` 
+                        INNER JOIN `TheBudget` ON `User`.`budgetID` = `TheBudget`.`budgetID`
+                        WHERE `email` = '$email'
+                        ");
+
+$stmt2->execute();
+$row = $stmt2->fetch();
+
+$budgetID = $row['budgetID'];
+
+$_SESSION['budgetID'] = $budgetID;
+
+
+// $budgetID = $
 
 $stmt = $pdo->prepare("
                             SELECT `income`, `wantToSave`, `food`, `drinks`, `groceries`, `transportation`, `shopping`, `entertainment`, `housing`, `digital`, `medical`, `miscellaneous`
-                            FROM `TheBudget` WHERE `budgetID` = '$number'
+                            FROM `TheBudget` WHERE `budgetID` = '$budgetID'
+                            ");
+$stmt->execute();
+
+
+
+$stmt = $pdo->prepare("
+                            SELECT `income`, `wantToSave`, `food`, `drinks`, `groceries`, `transportation`, `shopping`, `entertainment`, `housing`, `digital`, `medical`, `miscellaneous`
+                            FROM `TheBudget` WHERE `budgetID` = '$budgetID'
                             ");
 $stmt->execute();
 
 $sum = $pdo->prepare("
                             SELECT SUM(`food` + `drinks` + `groceries` + `transportation` + `shopping` + `entertainment` + `housing` + `digital` + `medical` + `miscellaneous`) AS sum
-                            FROM `TheBudget` WHERE `budgetID` = '$number'
+                            FROM `TheBudget` WHERE `budgetID` = '$budgetID'
                             ");
 $sum->execute();
 
 $leftover = $pdo->prepare("
                             SELECT SUM(`income` - `wantToSave` - `food` - `drinks` - `groceries` - `transportation` - `shopping` - `entertainment` - `housing` - `digital` - `medical` - `miscellaneous`) AS leftover
-                            FROM `TheBudget` WHERE `budgetID` = '$number'
+                            FROM `TheBudget` WHERE `budgetID` = '$budgetID'
                             ");
 
 $leftover->execute();
-
-
 
 
 
@@ -96,7 +120,7 @@ right side: income ,savings, leftover -->
 <p>$<?php echo($row['miscellaneous']); ?></p> -->
 
 <br>
-<form action="simulationUpdateResults-process.php" method="POST">
+<form action="simulationUpdateResults2-process.php" method="POST">
 
 
 <p>Edit your Budget here</p>

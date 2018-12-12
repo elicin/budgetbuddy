@@ -3,7 +3,7 @@
 session_start();
 
 $number = $_SESSION['number'];
-echo($number);
+// echo($number);
 
 
 $dsn = "mysql:host=localhost;dbname=ngeli_budget;charset=utf8mb4";
@@ -49,107 +49,156 @@ $stmt->execute();
 		<!-- <link rel="icon" href="IMMimages/favicon.ico" /> -->
 </head>
 <body>
-	<a href="main-page.html"><img src="IMMimages/IMM-logo.jpg" alt="IMM logo" title="logo" width='100'></a>
+	<a href="main-page.html"><img src="images/budgetbuddy-logo.png" title="logo" width='300'></a>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 
 	<!-- logo leads to main page -->
-	<h1>Simulation Expenses</h1>
+	<!-- <h1>My Money</h1> -->
+		<a href="revisit-budget.php" class="revisitBudgetButton">Revisit your Budget</a>
 	<nav>
-		<a href="revisit-budget.php">Revisit your Budget</a>
+		<div class="menu">
+			<ul class="menuUL">
+				<li class="menuLI">
+					<a href="my-money.html">My Money</a></li>
+				<li class="menuLI">
+					<a href="savings.html">Savings</a> </li>
+				<li class="menuLI">
+					<a href="spendings.php">Spending</a> </li>
+				<li class="menuLI">
+					<a href="about.html">About</a> </li>
+				<li class="menuLI">
+					<a href="simulation.php">Simulation</a></li>
+			</ul>
+		</div>
+	</nav>
 
-	<ul>
-		<li>
-			<a href="my-money.html">My Money</a></li>
-		<li>
-			<a href="savings.html">Savings</a> </li>
-		<li>
-			<a href="spendings.php">Spending</a> </li>
-		<li>
-			<a href="contact-form.php">Contact Form</a> </li>
-		<li>
-			<a href="about.html">About</a> </li>
-		<li>
-			<a href="simulation.php">Simulation</a></li>
-	</ul>
-
-	<p>Insert your expenditures in the left per month</p> <!--this will disappear when clicked. -->
+	<h2 class="headings">Insert your expenditures in the left per month</h2> <!--this will disappear when clicked. -->
 	
 <?php while ($row = $stmt->fetch()) { ?>
 	<form action="simulationExpenses-process.php" method="POST">
 		
-		<p><img src="images/food.png">
-			Food $<input type="number" name="food" value="<?php echo($row['food']); ?>"/></p>
+
+	<div class="grid-container">
+		<div class=grid-item"><p><img src="images/food.png" width="40">
+			Food</p> $ <input type="number" class="inputNumbersExp" style="font-size: 12px;" name="food" value="<?php echo($row['food']); ?>"/></div>
 		
 
-		<p><img src="images/drinks.png">
-			Drinks: $<input type='number' name='drinks' value="<?php echo($row['drinks']); ?>"/></p>
-		<?php
-			$drinks1 = (int)$row['drinks'];
-
-			if($drinks1 > 0 && $drinks1 <= 200){
-				?> 
-				<img class="drinks" src="images/drinks1.png" width='50'>
-				<?php
-			}
-			else if($drinks1 > 200){
-				?>
-				<img src="images/drinks2.png" width='50'>
-				<?php
-			}
-		?>
-
-		<p>Groceries: $<input type='number' name='groceries' value="<?php echo($row['groceries']); ?>"/></p>
-
-
-		<p>Transportation: $<input type='number' name='transportation' value="<?php echo($row['transportation']); ?>"/></p>
+		<div class=grid-item"><p><img src="images/drinks.png" width="40">
+			Drinks</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='drinks' value="<?php echo($row['drinks']); ?>"/></div>
 		
 
-		<p>Shopping: $<input type='number' name='shopping' value="<?php echo($row['shopping']); ?>"/></p>
+		<div class="grid-item"><p><img src="images/groceries.png" width="40">
+		Groceries</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='groceries' value="<?php echo($row['groceries']); ?>"/></div>
+
+
+		<div class="grid-item"><p><img src="images/transportation.png" width="40">
+		Transportation</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='transportation' value="<?php echo($row['transportation']); ?>"/></div>
 		
 
-		<p>Entertainment: $<input type='number' name='entertainment' value="<?php echo($row['entertainment']); ?>"/></p>
+		<div class="grid-item"><p><img src="images/shopping.png" width="40">
+		Shopping</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='shopping' value="<?php echo($row['shopping']); ?>"/></div>
 		
 
-		<p>Housing: $<input type='number' name='housing' value="<?php echo($row['housing']); ?>"/></p>
+		<div class="grid-item"><p><img src="images/entertainment.png" width="40">
+		Entertainment</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='entertainment' value="<?php echo($row['entertainment']); ?>"/></div>
 		
 
-		<p>Digital: $<input type='number' name='digital' value="<?php echo($row['digital']); ?>"/></p>
+		<div class="grid-item"><p><img src="images/housing.png" width="40">
+		Housing</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='housing' value="<?php echo($row['housing']); ?>"/></div>
 		
 
-		<p>Medical: $<input type='number' name='medical' value="<?php echo($row['medical']); ?>"/></p>
+		<div class="grid-item"><p><img src="images/digital.png" width="40">
+		Digital</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='digital' value="<?php echo($row['digital']); ?>"/></div>
 		
 
-		<p>Miscellaneous: $<input type='number' name='miscellaneous' value="<?php echo($row['miscellaneous']); ?>"/></p>
+		<div class="grid-item"><p><img src="images/medical.png" width="40">
+		Medical</p> $ <input type='number' class="inputNumbersExp" style="font-size: 12px;" name='medical' value="<?php echo($row['medical']); ?>"/></div>
+		
 
-		<input type="submit" />
+		<div class="grid-item"><p><img src="images/miscellaneous.png" width="40">
+		Miscellaneous</p> $<input type='number' class="inputNumbersExp" style="font-size: 12px;" name='miscellaneous' value="<?php echo($row['miscellaneous']); ?>"/></div>
+</div>
+		<input type="submit" class="simulationButtonExpense" />
 
-		<input type="submit" value="See changes" formaction="simulationExpensesChange-process.php" />
+		<input type="submit" class="simulationButtonChange" value="See changes below" formaction="simulationExpensesChange-process.php" />
+<br>
+
+<div id="container">
+		<img src="images/skybackground.png" width='100%'>
 <?php 
 
 			$food1 = (int)$row['food'];
-
+?><?php
 			if($food1 > 0 && $food1 <= 200 ){
 				// echo("0 to 200");
 				?> 
-				<img src="images/food1.png" class="foodimg" width='100'>
+				<img src="images/food1.png" class="foodimg" width="15%">
 				<?php
 			}
 			else if($food1 > 200){
 				?>
-				<img src="images/food2.png" class="foodimg" width='100'>
+				<img src="images/food2.png" class="foodimg" width="25%">
 				<?php
 			}
-		?>
+	?><?php
+			$drinks1 = (int)$row['drinks'];
+
+			if($drinks1 > 0 && $drinks1 <= 200){
+				?> 
+				<img class="drinksimg" src="images/drinks1.png">
+				<?php
+			}
+			else if($drinks1 > 200){
+				?>
+				<img class="drinksimg" src="images/drinks2.png">
+				<?php
+			}
+
+			$groceries1 = (int)$row['groceries'];
+
+			if($groceries1 > 0 && $groceries1 <= 200){
+				?> 
+				<img class="groceriesimg" src="images/groceries1.png">
+				<?php
+			}
+			else if($groceries1 > 200){
+				?>
+				<img class="groceriesimg" src="images/groceries2.png">
+				<?php
+			}
+?><div class=transdiv><?php
+			$transportation1 = (int)$row['transportation'];
+
+			if($transportation1 > 0 && $transportation1 <= 200){
+				?> 
+				<img src="images/transportation2.png">
+				<?php
+			}
+			else if($transportation1 > 200){
+				?>
+				<img src="images/transportation1.png">
+				<?php
+			}
+		?></div>
 <?php } ?>
+</div>
 
 
+<style type="text/css"> 
+.container { position:relative; }
+.imgA1 { position:absolute; top: 0px; left: 0px; z-index: 1; } 
+.imgB1 { position:absolute; top: 70px; left: 100px; z-index: 3; } 
+</style>
 
-
-
-<footer>
-	<p>mybudgetyouth@contact.com</p>
-</footer>
+<!-- <div class="container">
+<img class="imgA1" src="image1.png">
+<img class="imgB1" src="image2.png">
+</div>
+ -->
 
  <script src="js/main.js"></script>
 </body>
+<footer>
+	budgetbuddy@contact.com
+</footer>
 </html>

@@ -41,27 +41,32 @@ $images->execute();
 		<!-- <link rel="icon" href="IMMimages/favicon.ico" /> -->
 </head>
 <body>
-	<a href="main-page.html"><img src="IMMimages/IMM-logo.jpg" alt="IMM logo" title="logo" width='100'></a>
+	<a href="main-page.html"><img src="images/budgetbuddy-logo.png" title="logo" width='300'></a>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<!-- logo leads to main page -->
-	<p>Budgeting Main Page<p>
-	<nav>
-		<a href="revisit-budget.php">Revisit your Budget</a>
-	<ul>
-		<li>
-			<a href="my-money.html">My Money</a></li>
-		<li>
-			<a href="savings.html">Savings</a> </li>
-		<li>
-			<a href="spendings.html">Spending</a> </li>
-		<li>
-			<a href="contact-form.php">Contact Form</a> </li>
-		<li>
-			<a href="about.html">About</a> </li>
-		<li>
-			<a href="simulation.php">Simulation</a></li>
-	</ul>
 
+	<!-- logo leads to main page -->
+	<!-- <h1>My Money</h1> -->
+		<a href="revisit-budget.php" class="revisitBudgetButton">Revisit your Budget</a>
+	<nav>
+		<div class="menu">
+			<ul class="menuUL">
+				<li class="menuLI">
+					<a href="my-money.html">My Money</a></li>
+				<li class="menuLI">
+					<a href="savings.html">Savings</a> </li>
+				<li class="menuLI">
+					<a href="spendings.php">Spending</a> </li>
+				<li class="menuLI">
+					<a href="about.html">About</a> </li>
+				<li class="menuLI">
+					<a href="simulation.php">Simulation</a></li>
+			</ul>
+		</div>
+	</nav>
+<div>
+	<h2 class="headings">What are you spending your money on?</h2>
+	<p>Whether it's going out with friends, a pick-me-up coffee in the morning, or seeing something in a store that's a must buy, it's easy to spend money without realizing how much you've actually spent. While your morning coffee may only be $2, that can accumulate to $60 a month, and approximately $720 a year! Budgeting will help you take note on how much you're really spending so you can start figuring out how to start saving.</p>
+</div>
 <!-- <p>Categories of Expenditures</p> -->
 <!-- make it vertical -->
 <div class="sidenav">
@@ -78,15 +83,9 @@ $images->execute();
 
 </div>
 
-
-<div class="main">
-	<p>What are you spending your money on?</p>
-	<p>Whether it's going out with friends, a pick-me-up coffee in the morning, or seeing something in a store that's a must buy, it's easy to spend money without realizing how much you've actually spent. While your morning coffee may only be $2, that can accumulate to $60 a month, and approximately $720 a year! Budgeting will help you take note on how much you're really spending so you can start figuring out how to start saving.</p>
-</div>
-
 <div id="demo">
 	<div id="food">
-		<p>What is Food?</p>
+		<h2 class="headings">What is Food?</h2>
 		<p class="">Food is food. It’s what you eat to provide nutritions for your body to continue functioning.</p>
 		<p class="">Examples</p>
 		<ul>
@@ -94,11 +93,11 @@ $images->execute();
 			<li>Snacks</li>
 			<li>Eating out</li>
 		</ul>
-		<img src="images/food-big.png">
+		<img src="images/food-big.png" class="bigImageRight">
 
 	</div>
 	<div id="drinks">
-		<p class="">What are Drinks?</p>
+		<h2 class="headings">What are Drinks?</h2>
 		<p class="">Drinks would include any beverage that you consume outside of groceries.</p>
 		<p class="">Examples</p>
 		<ul>
@@ -107,11 +106,11 @@ $images->execute();
 			<li>Cafes</li>
 			<li>Fast food beverages</li>
 		</ul>
-		<img src="images/drinks-big.png">
+		<img class="bigImageRight" src="images/drinks-big.png">
 
 	</div>
 	<div id="groceries">
-		<p class="">What are Groceries?</p>
+		<h2 class="headings">What are Groceries?</h2>
 		<p class="">Groceries are items purchased as a grocery store to create meals to be consumed. By buying groceries, you have full control on what you consume and will have a better idea of how much money you've used.</p>
 		<p class="">Examples</p>
 		<ul>
@@ -122,11 +121,11 @@ $images->execute();
 			<li>Cans of soup</li>
 			<li>Any products purchased for future use</li>
 		</ul>
-		<img src="images/groceries-big.png">
+		<img src="images/groceries-big.png" class="bigImageRight">
 
 	</div>
 	<div id="transportation">
-		<p>What is Transportation?</p>
+		<h2 class="headings">What is Transportation?</h2>
 		<p>Transportation is any expense incurred to go from one location to another. Depending on your resources, this could be your car, or taking public transportation.</p>
 		<p>Examples</p>
 		<ul>
@@ -135,11 +134,11 @@ $images->execute();
 			<li>Car insurance</li>
 			<li>Parking</li>
 		</ul>
-		<img src="images/transportation-big.png">
+		<img src="images/transportation-big.png" class="bigImageRight">
 
 	</div>
 	<div id="shopping">
-		<p>What is Shopping?</p>
+		<h2 class="headings">What is Shopping?</h2>
 		<p>Shopping is things you purchase that don't go into the other categories.</p>
 		<p>Examples</p>
 		<ul>
@@ -149,11 +148,11 @@ $images->execute();
 			<li>Accessories</li>
 			<li>Personal care</li>
 		</ul>
-		<img src="images/shopping-big.png">
+		<img src="images/shopping-big.png" class="bigImageRight">
 
 	</div>
 	<div id="entertainment">
-		<p>What is Entertainment?</p>
+		<h2 class="headings">What is Entertainment?</h2>
 		<p>Entertainment are things that are for your own fun.</p>
 		<p>Examples</p>
 		<ul>
@@ -164,23 +163,22 @@ $images->execute();
 			<li>Arts</li>
 			<li>Magazines</li>
 		</ul>
-		<img src="images/entertainment-big.png">
+		<img src="images/entertainment-big.png" class="bigImageRight">
 
 	</div>
 	<div id="housing">
-		<p>What is Housing?</p>
+		<h2 class="headings">What is Housing?</h2>
 		<p>If you're still living at home, you likely won't have this expenditure, but once you start living by yourself, you'll start incurring things such as rent.</p>
 		<p>Examples</p>
 		<ul>
 			<li>Rent</li>
 			<li>Mortgage</li>
-			<li></li>
 		</ul>
-		<img src="images/housing-big.png">
+		<img src="images/housing-big.png" class="bigImageRight">
 
 	</div>
 	<div id="digital">
-		<p>What is Digital?</p>
+		<h2 class="headings">What is Digital?</h2>
 		<p>Digital will include everything related to your digital products, like your phone and tv.</p>
 		<p>Examples</p>
 		<ul>
@@ -188,11 +186,11 @@ $images->execute();
 			<li>TV plans</li>
 			<li>Cellular data</li>
 		</ul>
-		<img src="images/digital-big.png">
+		<img src="images/digital-big.png" class="bigImageRight">
 
 	</div>
 	<div id="health">
-		<p>What is Health?</p>
+		<h2 class="headings">What is Health?</h2>
 		<p>Health includes anything to take care of yourself. This includes going to yearly checkups and pharmaceutical drugs.</p>
 		<p>Examples</p>
 		<ul>
@@ -201,11 +199,11 @@ $images->execute();
 			<li>Eye care</li>
 			<li>Pharmacy</li>
 		</ul>
-		<img src="images/medical-big.png">
+		<img src="images/medical-big.png" class="bigImageRight">
 
 	</div>
 	<div id="miscellaneous">
-		<p>What is Miscellaneous?</p>
+		<h2 class="headings">What is Miscellaneous?</h2>
 		<p>This will include everything else that weren't included in the other categories.</p>
 		<p>Examples</p>
 		<ul>
@@ -214,7 +212,7 @@ $images->execute();
 			<li>Travelling</li>
 			<li>Business fees</li>
 		</ul>
-		<img src="images/miscellaneous-big.png">
+		<img src="images/miscellaneous-big.png" class="bigImageRight">
 
 	</div>
 
@@ -224,7 +222,7 @@ $images->execute();
 
 
 <footer>
-	<p>mybudgetyouth@contact.com</p>
+	budgetbuddy@contact.com
 </footer>
  <script src="js/main.js"></script>
 

@@ -132,7 +132,7 @@ echo("hi eileen");
 <a href="simulationFullResults.php">See Full Details</a>
 
 <footer>
-    <p>mybudgetyouth@contact.com</p>
+    budgetbuddy@contact.com
 </footer>
     </body>
 </html>

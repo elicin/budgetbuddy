@@ -1,9 +1,7 @@
 <?php
-
 session_start();
 
 $number = $_SESSION['number'];
-echo($number);
 
 
 $dsn = "mysql:host=localhost;dbname=ngeli_budget;charset=utf8mb4";
@@ -12,30 +10,7 @@ $dbpassword = "j*fWtHY&8q2";
 
 $pdo = new PDO($dsn, $dbusername, $dbpassword);
 
-//SELECT income from budget
-// $stmt = $pdo->prepare("
-// 							SELECT `wantToSave`
-// 							FROM `TheBudget`");
 
-
-
-
-// $stmt->execute();
-
-
-// // SELECT all the dietary images
-// $stmt1 = $pdo->prepare("
-//                         SELECT `greyImage`, `value`, `code`, `type`
-//                         FROM `dietallergyvalue`
-//                         WHERE `dietallergyvalue`.`type` = 'D'");
-// $stmt1->execute();
-
-// // SELECT all the allergy images
-// $stmt2 = $pdo->prepare("
-//                         SELECT `greyImage`, `value`, `code`, `type`
-//                         FROM `dietallergyvalue`
-//                         WHERE `dietallergyvalue`.`type` = 'A'");
-// $stmt2->execute();
 
 ?>
 
@@ -48,38 +23,42 @@ $pdo = new PDO($dsn, $dbusername, $dbpassword);
 		<!-- <link rel="icon" href="IMMimages/favicon.ico" /> -->
 </head>
 <body>
-	<a href="main-page.html"><img src="IMMimages/IMM-logo.jpg" alt="IMM logo" title="logo" width='100'></a>
+	<a href="main-page.html"><img src="images/budgetbuddy-logo.png" title="logo" width='300'></a>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 	<!-- logo leads to main page -->
-	<h1>Simulation Savings</h1>
+	<!-- <h1>My Money</h1> -->
+		<a href="revisit-budget.php" class="revisitBudgetButton">Revisit your Budget</a>
 	<nav>
-		<a href="revisit-budget.php">Revisit your Budget</a>
+		<div class="menu">
+			<ul class="menuUL">
+				<li class="menuLI">
+					<a href="my-money.html">My Money</a></li>
+				<li class="menuLI">
+					<a href="savings.html">Savings</a> </li>
+				<li class="menuLI">
+					<a href="spendings.php">Spending</a> </li>
+				<li class="menuLI">
+					<a href="about.html">About</a> </li>
+				<li class="menuLI">
+					<a href="simulation.php">Simulation</a></li>
+			</ul>
+		</div>
+	</nav>
 
-	<ul>
-		<li>
-			<a href="my-money.html">My Money</a></li>
-		<li>
-			<a href="savings.html">Savings</a> </li>
-		<li>
-			<a href="spendings.php">Spending</a> </li>
-		<li>
-			<a href="contact-form.php">Contact Form</a> </li>
-		<li>
-			<a href="about.html">About</a> </li>
-		<li>
-			<a href="simulation.php">Simulation</a></li>
-	</ul>
-
-	<p>How much do you want to save per month?</p>
+<div class="middleAlign">
+	<h2 class="headingsDollar">How much do you want to save per month?</h2>
 	<form action="simulationSavings-process.php" method="POST">
-		$<input type="number" name="wantToSave" required />
+		<p class="dollar">$ <input type="number" class="inputNumbers" style="font-size: 20px;" name="wantToSave" required /></p>
 		<br>
 			
-		<input type="submit" />
-	
+		<input class="simulationButtonSubmit" type="submit" />
+	</form>
+</div>
 
 
 <footer>
-	<p>mybudgetyouth@contact.com</p>
+	budgetbuddy@contact.com
 </footer>
 </body>
 </html>

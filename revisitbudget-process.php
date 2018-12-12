@@ -2,6 +2,12 @@
 session_start();
 $email = $_POST['email'];
 
+
+// $email = $pdo->lastInsertId(`email`);
+// echo($number);
+
+$_SESSION['email'] = $email;
+
 // if (isset($_SESSION['logged-in'])) {
 // 	// if user is logged in, redirect back to home
 // 	if ($_SESSION["logged-in"] == true) {
@@ -23,21 +29,35 @@ $dbpassword = "j*fWtHY&8q2";
 
 $pdo = new PDO($dsn, $dbusername, $dbpassword);
 
-$stmt = $pdo->prepare("
-						SELECT `email`
-						FROM `User`
-						WHERE `email` = '$email' ");
-$stmt->execute();
+header("Location: simulationFullResults2.php");
 
-if($row = $stmt->fetch()){
-	$_SESSION['logged-in'] = true;
-	$_SESSION['email'] = $row['email'];
-	$_SESSION['budgetID'] = $row['budgetID'];
 
-	header("Location: simulationFullResults.php");
-}
-	header("Location: revisit-budget.php");
+// $stmt = $pdo->("
+// 						SELECT `budgetID`
+//                         FROM `User` 
+//                         INNER JOIN `TheBudget` ON `User`.`budgetID` = `TheBudget`.`budgetID`
+//        					WHERE `budgetID` = '$email'
+// 						")
 
+// $stmt->execute();
+
+// $row = $stmt->fetch()
+
+
+// if($row = $stmt->fetch()){
+// 	// $_SESSION['logged-in'] = true;
+// 	$_SESSION['email'] = $row['email'];
+// 	// $_SESSION['budgetID'] = $row['budgetID'];
+
+// // echo("works");
+// 	echo($stmt);
+// 	// header("Location: simulationFullResults2.php");
+// }
+// else{
+// 	echo("ntohong");
+// 	// header("Location: revisit-budget.php");
+// }
+// echo("no works");
 ?>
 
 <!-- i input the email in revisit-budget.php. from there, the process will pull which budgetID coincides with that email, and spit out those values -->

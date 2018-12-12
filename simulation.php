@@ -39,38 +39,41 @@ $pdo = new PDO($dsn, $dbusername, $dbpassword);
 		<!-- <link rel="icon" href="IMMimages/favicon.ico" /> -->
 </head>
 <body>
-	<a href="main-page.html"><img src="IMMimages/IMM-logo.jpg" alt="IMM logo" title="logo" width='100'></a>
+	<a href="main-page.html"><img src="images/budgetbuddy-logo.png" title="logo" width='300'></a>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
 	<!-- logo leads to main page -->
-	<h1>Simulation Income</h1>
+	<!-- <h1>My Money</h1> -->
+		<a href="revisit-budget.php" class="revisitBudgetButton">Revisit your Budget</a>
 	<nav>
-		<a href="revisit-budget.php">Revisit your Budget</a>
+		<div class="menu">
+			<ul class="menuUL">
+				<li class="menuLI">
+					<a href="my-money.html">My Money</a></li>
+				<li class="menuLI">
+					<a href="savings.html">Savings</a> </li>
+				<li class="menuLI">
+					<a href="spendings.php">Spending</a> </li>
+				<li class="menuLI">
+					<a href="about.html">About</a> </li>
+				<li class="menuLI">
+					<a href="simulation.php">Simulation</a></li>
+			</ul>
+		</div>
+	</nav>
 
-	<ul>
-		<li>
-			<a href="my-money.html">My Money</a></li>
-		<li>
-			<a href="savings.html">Savings</a> </li>
-		<li>
-			<a href="spendings.php">Spending</a> </li>
-		<li>
-			<a href="contact-form.php">Contact Form</a> </li>
-		<li>
-			<a href="about.html">About</a> </li>
-		<li>
-			<a href="simulation.php">Simulation</a></li>
-	</ul>
-
-	<p>Insert your Income per month to get started</p>
+<div class="middleAlign">
+	<h2 class="headingsDollar">Insert your Income per month to get started</h2>
 	<form action="simulation-process.php" method="POST">
-		$<input type="number" name="income" required/>
+		<p class="dollar">$ <input type="number" class="inputNumbers" style="font-size: 20px;" name="income" required/></p>
 		<br>
 			
-		<input type="submit" />
-	
-
+		<input class="simulationButtonSubmit" type="submit" />
+	</form>
+<div>
 
 <footer>
-	<p>mybudgetyouth@contact.com</p>
+	budgetbuddy@contact.com
 </footer>
 </body>
 </html>
